@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"fmt"
 	"gauntlet-be/m/v2/internal/services"
 	"net/http"
 
@@ -11,8 +10,6 @@ import (
 func GetRequestLogs(c *gin.Context) {
 
 	response, errResp := services.GetRequestLogs()
-	fmt.Println("GetRequestLogs ", response)
-
 	if errResp != nil {
 		c.JSON(errResp.HttpErrorCode, gin.H{
 			"msg": errResp.Msg,
@@ -20,6 +17,18 @@ func GetRequestLogs(c *gin.Context) {
 		})
 		return
 	}
+	// type TempResp struct {
+	// 	Data interface{}
+	// }
+
+	// s, _ := strconv.Unquote(datalist)
+
+	// fmt.Println(s)
+
+	// fmt.Println(datalist)
+
+	// var tempResp map[string]interface{}
+	// json.Unmarshal([]byte(s), &tempResp)
 
 	c.JSON(http.StatusOK, response)
 }

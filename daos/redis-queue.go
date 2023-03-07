@@ -1,12 +1,18 @@
 package daos
 
-// func GetAllRedisQueueLogs() (logs []models.AllocationLogs, err error) {
+import (
+	"fmt"
+	"gauntlet-be/m/v2/daos/models"
+	"gauntlet-be/m/v2/database"
+)
 
-// 	database.Db.Table("nse_allocations").Find(&logs)
-// 	if err != nil {
-// 		fmt.Println("Error getting allocation logs in GetAllAllocationLogs", err)
-// 		return
-// 	}
+func GetAllNSELedgersLogs() (logs []models.NSELedgersLogs, err error) {
 
-// 	return logs, nil
-// }
+	database.Db.Table("nse_ledgers").Find(&logs)
+	if err != nil {
+		fmt.Println("Error getting nse ledgers logs in GetAllNSELedgersLogs", err)
+		return
+	}
+
+	return logs, nil
+}
