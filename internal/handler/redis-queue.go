@@ -9,7 +9,7 @@ import (
 
 func GetNSELedhersLogs(c *gin.Context) {
 
-	response, errResp := services.GetAllocationLogs()
+	response, errResp := services.GetNSELedhersLogs()
 
 	if errResp != nil {
 		c.JSON(errResp.HttpErrorCode, gin.H{
