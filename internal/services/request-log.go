@@ -3,15 +3,14 @@ package services
 import (
 	"fmt"
 	"gauntlet-be/m/v2/daos"
-	"gauntlet-be/m/v2/daos/models"
 	"gauntlet-be/m/v2/globals"
 	"net/http"
 )
 
-func GetRequestLogs() ([]models.FormatedRequestLogs, *globals.HttpError) {
+func GetRequestLogs() ([]daos.FormatedRequestLogs, *globals.HttpError) {
 	resp, err := daos.GetAllRequestLogs()
 	fmt.Println("GetRequestLogs : ", resp)
-	respJson := []models.FormatedRequestLogs{}
+	respJson := []daos.FormatedRequestLogs{}
 
 	for _, log := range resp {
 		respJson = append(respJson, log.Format())
